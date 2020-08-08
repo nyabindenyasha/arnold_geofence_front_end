@@ -1,0 +1,11 @@
+<p></p>
+<div class="row ">
+    <app-table-view [data]="tableData" [add]="false" [title]="'Cow\'s GPS Details'"
+        (itemClick)="itemClick($event)" (addClick)="addClick()" class="col-6" [entries]="10"></app-table-view>
+
+    <app-form-view [buttons]="true" [btnLeft]="btnLeft" [form]="selected" [title]="'Cow\'s GPS Details'" class="col-6" *ngIf="!isAdd && selected && !isMaps"
+        [headers]="tableData.headers" (edit)="editClick($event)" (delete)="deleteClick($event)" (onaction)="onCustomBtnAction($event)"></app-form-view>
+
+        <app-maps [coordinates]="coordinatesDetails" *ngIf="isMaps" class="col 6"> </app-maps>
+
+</div>

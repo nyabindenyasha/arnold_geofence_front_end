@@ -1,0 +1,16 @@
+<agm-map [latitude]="coordinates.sourceLat" [longitude]="coordinates.sourceLong" [zoom]="location.zoom"
+  (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
+  <agm-marker *ngFor="let mark of location.markers" [latitude]="mark.lat" [longitude]="mark.lng"
+    (markerClick)="selectMarker($event)" [markerDraggable]="true" (dragEnd)="markerDragEnd(coords, $event)"
+    [label]="mark.label">
+  </agm-marker>
+  <agm-direction 
+        [origin]="origin" 
+        [destination]="destination"
+    ></agm-direction>
+</agm-map>
+<div>
+  Distance: {{distance}}
+</div>
+
+

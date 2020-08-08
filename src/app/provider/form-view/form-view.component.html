@@ -1,0 +1,63 @@
+<br/>
+<mdb-card class="padding">
+  <mdb-card-body>
+    <div style="color: #757575;">
+      <h3 class="text-right" *ngIf="title"> <strong>{{title}}</strong> </h3>
+
+      <button mdbBtn rounded="true" *ngIf="back" class="blue darken-4 waves-light float-left fa fa-angle-double-left"
+      mdbWavesEffect (click)="onBack()"></button>
+
+      <br *ngIf="title" />
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let head of headers"><b>{{head.Display}}</b> :
+          <span *ngIf="head.DataType == 0">{{form[head.Name]}}</span>
+          <span *ngIf="head.DataType == 1">{{form[head.Name] | date : 'dd-MMM-yyyy'}}</span>
+          <span *ngIf="head.DataType == 2" title="{{form[head.Name][head.SubName]}}">{{form[head.Name][head.SubName]}}</span>
+          <span style="font-size:2em;" *ngIf="head.DataType == 3">
+            <i class="fa" [ngClass]="{'green-text fa-check': form[head.Name], 'red-text fa-times': !form[head.Name]}"></i>
+          </span>
+          <span *ngIf="head.DataType == 4">
+            <i class="fa" [ngClass]="{'green-text fa-check': form[head.Name], 'red-text fa-times': !form[head.Name]}">
+              {{&nbsp;form[head.SubName]}}
+            </i>
+          </span>
+          <img *ngIf="head.DataType == 5" src="{{form[head.Name]}}" class="col-6 offset-3" width="100" />
+          <span *ngIf="head.DataType == 6">{{form[head.Name] | currency : 'USD':true:'1.2-2'}}</span>
+        </li>
+      </ul>
+      <br />
+      <div class="btm-group float-right" role="group" *ngIf ="buttons" >
+        <button mdbBtn type="button" (click)="ondelete()" color="danger" rounded="true" outline="true" class="waves-light fa fa-trash"
+          mdbWavesEffect></button>
+          <button mdbBtn type="button" color="info" (click)="onedit()" rounded="true" outline="true" class="waves-light fa fa-edit"
+          mdbWavesEffect></button>
+      </div>
+      <div class="row float-right">
+        <div  *ngIf="editButton">
+          <button mdbBtn type="button" color="info" (click)="onedit()" rounded="true" outline="true" class="waves-light fa fa-edit float-right"
+            mdbWavesEffect></button>
+        </div>
+        <div   *ngIf ="deleteButton" >
+          <button mdbBtn type="button" (click)="ondelete()" color="danger" rounded="true" outline="true" class="waves-light fa fa-trash float-right"
+            mdbWavesEffect></button>
+        </div>
+      </div>
+     
+
+      <button *ngIf="action" class="cyan darken-4 btn float-right" mdbWavesEffect (click)="oncustomBtn()"
+        mdbWavesEffect>
+        {{action.title}}
+      </button>
+
+      <div class="btn-group float-right" role="group" *ngIf="btnLeft">
+        <span *ngFor="let btn of btnLeft">
+          <!-- <button mdbBtn type="button" (click)="oncustomBtn(btn)" color="{{btn.color}}" rounded="true" outline="true"
+            class="waves-light noprint" mdbWavesEffect>{{btn.title}}</button> -->
+              <button mdbBtn type="button" (click)="oncustomBtn(btn)" color="primary" rounded="true" outline="true"
+            class="waves-light noprint" mdbWavesEffect>{{btn.title}}</button> &nbsp;
+        </span> 
+      </div>
+      
+    </div>
+  </mdb-card-body>
+</mdb-card>

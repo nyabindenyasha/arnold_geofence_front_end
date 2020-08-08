@@ -1,0 +1,117 @@
+<!-- <div class="container"> -->
+<br>
+<h1 class="text-primary text-center">Cattle Tracking System Using GPS With Health Monitoring Sensors</h1>
+
+<div *ngIf="!isHeartRateData && !isTemperatureData && !isGPS" class="row">
+  <div class="col-8 container">
+    <agm-map *ngIf="isDataLoaded" [latitude]="cowParameters.lat" [longitude]="cowParameters.lng" [zoom]=18
+      (mapClick)="onChoseLocation($event)">
+      <agm-marker *ngIf="isDataLoaded" [latitude]="cowParameters.lat" [longitude]="cowParameters.lng">
+      </agm-marker>
+
+      <agm-polygon [paths]="polygon"></agm-polygon>
+    </agm-map>
+
+    <br>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8 text-center">
+        <h3 class="text-primary">Location Alerts</h3>
+        <br>
+        <div class="alert" [hidden]="!showAlert">
+          <p>This cow has left the ranch</p>
+        </div>
+
+        <div class="location alert" [hidden]="!showLocationUpdate">
+          <p>This cow's location has changed, but still in the ranch</p>
+        </div>
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </div>
+
+  <div class="col-4 container">
+    <h3 class="text-center text-secondary">REMARKS</h3>
+
+    <br>
+
+    <table class="table">
+      <thead class="grey lighten-2">
+        <tr>
+          <th scope="col">Parameter</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+
+      <tr>
+        <td>Heart rate / BPM</td>
+        <td *ngIf="isDataLoaded">{{cowParameters.heartrate}}</td>
+      </tr>
+      <tr>
+        <td>Temparature / &#8451;</td>
+        <td *ngIf="isDataLoaded">{{cowParameters.temp}}</td>
+      </tr>
+
+      <tr>
+        <td>Latitude</td>
+        <td *ngIf="isDataLoaded">{{cowParameters.lat}}</td>
+      </tr>
+      <tr>
+        <td>Longitude</td>
+        <td *ngIf="isDataLoaded">{{cowParameters.lng}}</td>
+      </tr>
+
+      <!-- <tr>
+            <td>Surplus Power</td>
+            <td>55</td>
+          </tr> -->
+    </table>
+
+    <br>
+
+    <!-- <table class="table">
+          <thead class="grey lighten-2">
+            <tr>
+              <th scope="col">Parameter</th>
+              <th scope="col">Surbub A</th>
+              <th scope="col">Surbub B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Previous Consumption</td>
+              <td>22</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td>Current Consumption</td>
+              <td>22</td>
+              <td>22</td>
+            </tr>
+          </tbody>
+        </table> -->
+
+
+    <h3 class="text-center text-secondary">STATISTICS</h3>
+
+    <p class="text-primary"> <a (click)="heartRateClick()"> Click here to view heart rate data </a> </p>
+    <p class="text-primary"> <a (click)="temperatureClick()"> Click here to view temperature data </a> </p>
+    <p class="text-primary"> <a (click)="gpsClick()"> Click here to view GPS history </a> </p>
+
+
+  </div>
+</div>
+
+
+<!-- </div> -->
+
+
+
+<!-- (mapClick)="onChoseLocation($event)" -->
+
+<app-heartrate-data *ngIf="isHeartRateData"></app-heartrate-data>
+
+<app-temperature-data *ngIf="isTemperatureData"></app-temperature-data>
+
+<app-gps-data *ngIf="isGPS"></app-gps-data>

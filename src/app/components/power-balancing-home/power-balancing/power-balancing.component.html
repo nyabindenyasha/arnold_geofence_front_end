@@ -1,0 +1,157 @@
+<div class="power">
+
+  {{title}}  <br>
+
+  <label for="customRange3"> <strong>Supply Power Sliders</strong> </label>
+  <input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3"
+    [(ngModel)]="sliderModel.sliderValue">
+
+  <br><br>
+
+  <div class="row">
+    <div class="col-6">
+      <div style="display: block">
+        <canvas mdbChart 
+            [chartType]="chartType1" 
+            [datasets]="chartDatasets1" 
+            [labels]="chartLabels1"
+            [colors]="chartColors1" 
+            [options]="chartOptions" 
+            [legend]="true" 
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
+      
+      <br><br>
+
+    </div>
+
+    <div class="col-1"></div>
+
+    <div class="col-5">
+      <h3 class="text-center">REMARKS</h3>
+
+      <br>
+
+      <table class="table">
+        <thead class="grey lighten-2">
+          <tr>
+            <th scope="col">Parameter</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+
+        <tr>
+          <td>Supply Power</td>
+          <td>{{supplyPower}}</td>
+        </tr>
+        <tr>
+          <td>Deficit Power</td>
+          <td>{{deficitPower}}</td>
+        </tr>
+
+        <tr>
+          <td>Surplus Power</td>
+          <td>{{surplusPower}}</td>
+        </tr>
+      </table>
+
+      <br>
+
+      <table class="table">
+        <thead class="grey lighten-2">
+          <tr>
+            <th scope="col">Parameter</th>
+            <th scope="col">Surbub A</th>
+            <th scope="col">Surbub B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Previous Consumption</td>
+            <td>{{surbubAPrevious}}</td>
+            <td>{{surbubBPrevious}}</td>
+          </tr>
+          <tr>
+            <td>Current Consumption</td>
+            <td>{{surbubACurrent}}</td>
+            <td>{{surbubBCurrent}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+      <table class="table">
+        <thead class="grey lighten-2">
+          <tr>
+            <th scope="col">Devices Status</th>
+            <th scope="col">Surbub A</th>
+            <th scope="col">Surbub B</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Geysers</td>
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubAGeyserOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubBGeyserOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Stoves</td>
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubAStoveOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubBStoveOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Other Gadgets</td>
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubAOtherGadgetsOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+
+            <td>
+              <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="customSwitches"
+                  [(ngModel)]="deviceStatusModel.surbubBOtherGadgetsOn">
+                <label class="custom-control-label" for="customSwitches"></label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+</div>

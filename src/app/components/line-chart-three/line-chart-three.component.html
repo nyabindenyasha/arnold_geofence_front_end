@@ -1,0 +1,23 @@
+<h1 class="text-primary text-center">Cattle Tracking System Using GPS With Health Monitoring Sensors</h1>
+<br>
+<h3 class="text-primary text-center">Heart rate Data</h3>
+<div class="chart">
+    <canvas mdbChart width="200" height="200" 
+        [data]="lineChartData" 
+        [labels]="lineChartLabels" 
+        [legend]="false"
+        chartType="line" 
+        [options]="chartOption"
+        [colors]="chartColors">
+    </canvas>
+
+</div>
+
+
+<!-- <div class="chart">
+    <h1> Type : Horizontal Bar</h1>
+
+    <canvas mdbChart width="400" height="400" [data]="lineChartData" [labels]="lineChartLabels" [legend]="false"
+        chartType="horizontalBar" [options]="horizontalChartOption"></canvas>
+
+</div> -->

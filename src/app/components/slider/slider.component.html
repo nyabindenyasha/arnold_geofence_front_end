@@ -1,0 +1,25 @@
+<label for="customRange3">Example range</label>
+<input type="range" class="custom-range" min="0" max="100" step="1" id="customRange3" [(ngModel)]="sliderModel.sliderValue">
+
+<br>
+
+<!-- Default switch -->
+<!-- <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitches" [(ngModel)]="sliderModel.toggleValue">
+    <label class="custom-control-label" for="customSwitches">Toggle this switch element</label>
+  </div> -->
+
+<!-- <button mdbBtn color="unique" (click)="onSubmit()">Submit</button> -->
+
+  <div style="display: block">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
